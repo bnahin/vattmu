@@ -9,14 +9,21 @@
             <a href="#">VATUSA <strong>TMS</strong></a>
         </div>
         <!-- /.login-logo -->
+        @include('flash::message')
         <div class="login-box-body">
             <p class="login-box-msg">Sign in to access v<strong>TMS</strong></p>
 
             <div class="social-auth-links text-center">
-                <a href="#" class="btn btn-block btn-social btn-linkedin btn-flat"><i class="fas fa-paper-plane"></i>
+                <a href="{{ route('login') }}"
+                   onclick="event.preventDefault(); document.getElementById('login-form').submit();"
+                   class="btn btn-block btn-social btn-linkedin btn-flat"><i
+                        class="fas fa-paper-plane"></i>
                     Sign in with
                     VATSIM</a>
             </div>
+            <form id="login-form" action="{{ url('login') }}" method="post" style="display:none;">
+                @csrf
+            </form>
             <!-- /.social-auth-links -->
             <p class="text-muted">The Traffic Management System allows for the prediction and supervision of VATSIM
                 traffic.
@@ -25,7 +32,7 @@
             <div class="box-footer">
                 <p class="text-center">
                     <a href="https://github.com/bnahin/vattms"
-                       class="pull-left" data-toggle="tooltip" title="View Source on GitHub" ><i
+                       class="pull-left" data-toggle="tooltip" title="View Source on GitHub"><i
                             class="fab fa-github"></i></a>
                     <a href="/privacy" class="pull-right" data-toggle="tooltip" title="Privacy Policy">
                         <i class="fas fa-user-lock"></i></a>

@@ -8,6 +8,7 @@ use App\Traits\Eloquent\SearchLikeTrait;
 use App\Traits\Models\FillableFields;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Support\Facades\Cache;
 
 /**
  * App\User
@@ -65,11 +66,10 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name',
-        'email',
-        'password',
-        'is_admin',
-        'logo_number'
+        'cid',
+        'first_name',
+        'last_name',
+        'email'
     ];
 
     /**
@@ -87,7 +87,7 @@ class User extends Authenticatable
      */
     public function isAdmin()
     {
-        return (int)$this->isAdmin === 1;
+        return (int)$this->is_admin === 1;
     }
 
     /**
@@ -116,5 +116,10 @@ class User extends Authenticatable
     public function setLastNameAttribute($value)
     {
         $this->attributes['last_name'] = ucwords($value);
+    }
+
+    public function isOnline()
+    {
+        return Cache::has('user-online-' . $this->id);
     }
 }

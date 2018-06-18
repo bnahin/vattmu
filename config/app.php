@@ -152,6 +152,7 @@ return [
          */
         Laracasts\Flash\FlashServiceProvider::class,
         DaveJamesMiller\Breadcrumbs\BreadcrumbsServiceProvider::class,
+        Vatsim\OAuthLaravel\OAuthServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -211,9 +212,10 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
 
-        'Flash' => Laracasts\Flash\Flash::class,
+        'Flash'       => Laracasts\Flash\Flash::class,
         'Breadcrumbs' => DaveJamesMiller\Breadcrumbs\Facades\Breadcrumbs::class,
-        'Carbon' => Carbon\Carbon::class,
+        'Carbon'      => Carbon\Carbon::class,
+        'VatsimSSO'   => Vatsim\OAuthLaravel\SSOFacade::class
 
     ],
 

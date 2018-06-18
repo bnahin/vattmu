@@ -13,8 +13,10 @@
 
 Route::group(['namespace' => 'Auth'], function () {
     $this->get('login', 'LoginController@showLoginForm')->name('login');
+    $this->get('login/validate', 'LoginController@validateLogin')->name('validate');
     $this->post('login', 'LoginController@login');
     $this->post('logout', 'LoginController@logout')->name('logout');
 });
 
-Route::get('/', 'WelcomeController@index')->name('home');
+Route::get('/', 'WelcomeController@index')->name('home')
+    ->middleware('auth');

@@ -27,3 +27,4 @@ mix.js([
     'public/adminlte/plugins/iCheck/all.css',
     'public/adminlte/plugins/select2/css/select2.css'
   ], 'public/css/plugins.css')
+  .disableNotifications();

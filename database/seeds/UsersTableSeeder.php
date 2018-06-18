@@ -16,14 +16,14 @@ class UsersTableSeeder extends Seeder
     {
         DB::table('users')->insert([
             [
-                'cid'        => 1275302,
-                'first_name' => 'Blake',
-                'last_name'  => 'Nahin',
-                'email'      => 'blake@zseartcc.org',
-                'password'   => Hash::make('secret'),
-                'isAdmin'    => 1,
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now(),
+                'cid'           => 1275302,
+                'first_name'    => 'Blake',
+                'last_name'     => 'Nahin',
+                'email'         => 'blake@zseartcc.org',
+                'is_admin'      => true,
+                'created_at'    => Carbon::now(),
+                'updated_at'    => Carbon::now(),
+                'last_activity' => Carbon::now()
             ]
         ]);
     }

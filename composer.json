@@ -1,7 +1,14 @@
 {
-    "name": "laravel/laravel",
-    "description": "The Laravel Framework.",
-    "keywords": ["framework", "laravel"],
+    "name": "bnahin/vattmu",
+    "description": "VATUSA TMU",
+    "keywords": [
+        "laravel",
+        "vatusa",
+        "tmu",
+        "tms",
+        "vatsim"
+    ],
+    "version": "0.0.1-alpha",
     "license": "MIT",
     "type": "project",
     "require": {
@@ -12,7 +19,8 @@
         "guzzlehttp/guzzle": "^6.3",
         "laracasts/flash": "^3.0",
         "laravel/framework": "5.6.*",
-        "laravel/tinker": "^1.0"
+        "laravel/tinker": "^1.0",
+        "vatsim/sso-laravel": "^3.0"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.1",

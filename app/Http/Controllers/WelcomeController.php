@@ -14,8 +14,6 @@ class WelcomeController extends Controller
      */
     public function index()
     {
-        Auth::loginUsingId(1, true);
-
         return view('index');
     }
 }
