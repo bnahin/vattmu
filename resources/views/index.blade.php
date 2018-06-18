@@ -1,15 +1,12 @@
 {{-- Extends Layout --}}
-@extends('layouts.backend')
+@extends('layouts.master')
 
 {{-- Page Title --}}
-@section('page-title', 'Admin')
-
-{{-- Page Subtitle --}}
-@section('page-subtitle', 'Control panel')
+@section('page-title', 'Dashboard')
 
 {{-- Breadcrumbs --}}
 @section('breadcrumbs')
-    {!! Breadcrumbs::render('admin') !!}
+    {!! Breadcrumbs::render('home') !!}
 @endsection
 
 {{-- Header Extras to be Included --}}

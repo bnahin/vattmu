@@ -5,13 +5,13 @@
         <!-- Sidebar user panel -->
         <div class="user-panel">
             <div class="pull-left image">
-                <a href="{{ route('dashboard::profile') }}">
-                    <img src="{{ Auth::user()->getLogoPath() }}" class="img-circle" alt="{{ Auth::user()->name }}">
+                <a href="/">
+                    <img src="/adminlte/img/avatar_1.png" class="img-circle" alt="{{ Auth::user()->full_name }}">
                 </a>
             </div>
             <div class="pull-left info">
-                <p><a href="{{ route('dashboard::profile') }}">{{ Auth::user()->name }}</a></p>
-                <a href="{{ route('dashboard::profile') }}"><i class="fa fa-circle text-success"></i> Online</a>
+                <p><a href="#">{{ Auth::user()->full_name }}</a></p>
+                <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
             </div>
         </div>
 
@@ -28,7 +28,7 @@
         </form>
         <!-- /.search form -->
 
-        @include('layouts.partials.backend.sidebar-menu')
+        @include('layouts.partials.sidebar-menu')
 
     </section>
     <!-- /.sidebar -->

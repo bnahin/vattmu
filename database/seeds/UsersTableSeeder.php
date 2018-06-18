@@ -16,20 +16,12 @@ class UsersTableSeeder extends Seeder
     {
         DB::table('users')->insert([
             [
-                'name' => 'Jon Snow',
-                'email' => 'admin@admin.com',
-                'password' => Hash::make('secret'),
-                'is_admin' => 1,
-                'logo_number' => 1,
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now(),
-            ],
-            [
-                'name' => 'Daenerys Targaryen',
-                'email' => 'member@example.com',
-                'password' => Hash::make('secret'),
-                'is_admin' => 0,
-                'logo_number' => 2,
+                'cid'        => 1275302,
+                'first_name' => 'Blake',
+                'last_name'  => 'Nahin',
+                'email'      => 'blake@zseartcc.org',
+                'password'   => Hash::make('secret'),
+                'isAdmin'    => 1,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ]

@@ -12,21 +12,31 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 /**
  * App\User
  *
- * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
+ * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[]
+ *                $notifications
  * @method static \Illuminate\Database\Eloquent\Builder|\App\User createdRange($from, $to, $format = null)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\User createdToday()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\User latestFirst()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\User like($field, $value, $isOr = false)
  * @mixin \Eloquent
- * @property int $id
- * @property string $name
- * @property string $email
- * @property string $password
- * @property string|null $remember_token
- * @property \Carbon\Carbon|null $created_at
- * @property \Carbon\Carbon|null $updated_at
- * @property int $is_admin
- * @property int $logo_number
+ * @property int
+ *               $id
+ * @property string
+ *               $name
+ * @property string
+ *               $email
+ * @property string
+ *               $password
+ * @property string|null
+ *               $remember_token
+ * @property \Carbon\Carbon|null
+ *               $created_at
+ * @property \Carbon\Carbon|null
+ *               $updated_at
+ * @property int
+ *               $is_admin
+ * @property int
+ *               $logo_number
  * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereEmail($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereId($value)
@@ -36,6 +46,14 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\User wherePassword($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereRememberToken($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereUpdatedAt($value)
+ * @property int         $cid
+ * @property string      $first_name
+ * @property string      $last_name
+ * @property int         $isAdmin
+ * @property-read string $full_name
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereCid($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereFirstName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereLastName($value)
  */
 class User extends Authenticatable
 {
@@ -47,7 +65,11 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'is_admin', 'logo_number'
+        'name',
+        'email',
+        'password',
+        'is_admin',
+        'logo_number'
     ];
 
     /**
@@ -56,7 +78,8 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password',
+        'remember_token',
     ];
 
     /**
@@ -64,22 +87,34 @@ class User extends Authenticatable
      */
     public function isAdmin()
     {
-        return (int) $this->is_admin === 1;
+        return (int)$this->isAdmin === 1;
     }
 
     /**
      * @return string
      */
-    public function getLogoPath()
+    public function getFullNameAttribute()
     {
-        return Utils::logoPath($this->logo_number);
+        return $this->first_name . " " . $this->last_name;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getRecordTitle()
+    public function getFirstNameAttribute($value)
     {
-        return $this->name;
+        return ucfirst($value);
+    }
+
+    public function getLastNameAttribute($value)
+    {
+        return ucwords($value);
+    }
+
+    public function setFirstNameAttribute($value)
+    {
+        $this->attributes['first_name'] = ucfirst($value);
+    }
+
+    public function setLastNameAttribute($value)
+    {
+        $this->attributes['last_name'] = ucwords($value);
     }
 }

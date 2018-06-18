@@ -1,5 +1,5 @@
 {{-- Extends Layout --}}
-@extends('layouts.backend')
+@extends('layouts.master')
 
 <?php
 $_pageTitle = (isset($addVarsForView['_pageTitle']) && ! empty($addVarsForView['_pageTitle']) ? $addVarsForView['_pageTitle'] : ucwords($resourceTitle));

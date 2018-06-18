@@ -9,7 +9,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Login | VATUSA TMS</title>
+    <title>@yield('page-title') | VATUSA TMS</title>
 
     <!-- Bootstrap 3.3.7 -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -19,11 +19,8 @@
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
 
-    <!-- Plugins -->
-    <!-- iCheck for checkboxes and radio inputs -->
-    <link href="{{ cdn_asset('/adminlte/plugins/iCheck/all.css') }}" rel="stylesheet" type="text/css">
-    <!-- Select2 -->
-    <link href="{{ cdn_asset('/adminlte/plugins/select2/css/select2.min.css') }}" rel="stylesheet" type="text/css">
+    <!-- Plugin Styles -->
+    <link href="{{ mix('/css/plugins.css') }}" rel="stylesheet" type="text/css">
     <!-- datetimepicker -->
     <link
         href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css"
@@ -55,37 +52,69 @@
     @yield('head-extras')
 </head>
 
-<!-- ADD THE CLASS layout-top-nav TO REMOVE THE SIDEBAR. -->
-<body class="hold-transition login-page">
+<body class="hold-transition {{ config('adminlte.theme') }} sidebar-mini">
+@auth
+    <script type="text/javascript">
+      /* Recover sidebar state */
+      (function () {
+        if (Boolean(localStorage.getItem('sidebar-toggle-collapsed'))) {
+          var body = document.getElementsByTagName('body')[0]
+          body.className = body.className + ' sidebar-collapse'
+        }
+      })()
+    </script>
+@endauth
+
 <!-- Site wrapper -->
-@yield('content')
+<div class="wrapper">
+
+@include('layouts.partials.header')
+
+@include('layouts.partials.sidebar')
+
+<!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <h1>
+                @yield('page-title')
+                <small>@yield('page-subtitle')</small>
+            </h1>
+            @yield('breadcrumbs')
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+
+            @include('flash::message')
+
+            @yield('content')
+
+        </section>
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+
+    <footer class="main-footer">
+        <div class="pull-right hidden-xs">
+            <b>Version</b> {{ config('adminlte.version') }}
+        </div>
+        <strong>Copyright &copy; {{ date('Y') }}. {!! config('adminlte.credits') !!}</strong>
+    </footer>
+</div>
 <!-- ./wrapper -->
 
-<!-- jQuery 3 -->
-<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-<!-- Bootstrap 3.3.7 -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<!-- SlimScroll -->
-<script src="{{ cdn_asset('/adminlte/plugins/jquery-slimscroll/jquery.slimscroll.min.js') }}"></script>
-<!-- FastClick -->
-<script src="{{ cdn_asset('/adminlte/plugins/fastclick/fastclick.js') }}"></script>
+<script src="{{ mix('/js/app.js') }} "></script>
+<script src="{{ mix('/js/plugins.js') }}"></script>
 
-<!-- Plugins -->
-<!-- iCheck for checkboxes and radio inputs -->
-<script src="{{ cdn_asset('/adminlte/plugins/iCheck/icheck.min.js') }}" type="text/javascript"></script>
-<!-- Select2 -->
-<script src="{{ cdn_asset('/adminlte/plugins/select2/js/select2.min.js') }}" type="text/javascript"></script>
 <!-- Moment Js-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
 <!-- DatetimePicker Js-->
 <script
     src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
-<!-- END - Plugins -->
 
 <!-- AdminLTE App -->
 <script src="{{ cdn_asset('/adminlte/js/adminlte.min.js') }}"></script>
-<!-- Custom Js -->
-<script src="{{ cdn_asset('/js/frontend.js?version=' . config('adminlte.version')) }}"></script>
 
 <script type="text/javascript">
   (function ($) {
@@ -98,6 +127,19 @@
     } else {
       console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token')
     }
+  })(jQuery)
+</script>
+<script type="text/javascript">
+  (function ($) {
+    /* Store sidebar state */
+    $('.sidebar-toggle').click(function (event) {
+      event.preventDefault()
+      if (Boolean(localStorage.getItem('sidebar-toggle-collapsed'))) {
+        localStorage.setItem('sidebar-toggle-collapsed', '')
+      } else {
+        localStorage.setItem('sidebar-toggle-collapsed', '1')
+      }
+    })
   })(jQuery)
 </script>
 

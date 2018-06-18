@@ -1,8 +1,8 @@
 <!-- sidebar menu: : style can be found in sidebar.less -->
 <ul class="sidebar-menu" data-widget="tree">
     <li class="header">MAIN NAVIGATION</li>
-    <li class="{{ \App\Utils::checkRoute(['dashboard::index', 'admin::index']) ? 'active': '' }}">
-        <a href="{{ route('dashboard::index') }}">
+    <li class="{{ \App\Utils::checkRoute('home') ? 'active': '' }}">
+        <a href="{{ route('home') }}">
             <i class="fas fa-tachometer-alt"></i> <span>Dashboard</span>
         </a>
     </li>
@@ -31,13 +31,11 @@
         </a>
     </li>
     <li class="header">ADMINISTRATION</li>
-    @if (Auth::user()->can('viewList', \App\User::class))
-        <li class="{{ \App\Utils::checkRoute(['admin::users.index', 'admin::users.create']) ? 'active': '' }}">
-            <a href="{{ route('admin::users.index') }}">
+    <li class="">
+        <a href="#">
                 <i class="fas fa-users-cog"></i> <span>User Management</span>
             </a>
         </li>
-    @endif
     <li class="">
         <a href="admin">
             <i class="fas fa-cogs"> </i> Configuration

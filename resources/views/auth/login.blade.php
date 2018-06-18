@@ -1,4 +1,4 @@
-@extends('layouts.frontend')
+@extends('layouts.login')
 
 {{-- Page Title --}}
 @section('page-title', 'Login')
@@ -6,7 +6,7 @@
 @section('content')
     <div class="login-box with-border">
         <div class="login-logo">
-            <a href="../../index2.html">VATUSA <strong>TMS</strong></a>
+            <a href="#">VATUSA <strong>TMS</strong></a>
         </div>
         <!-- /.login-logo -->
         <div class="login-box-body">
