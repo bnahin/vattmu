@@ -37,6 +37,7 @@
 
     <!-- Custom CSS -->
     <link href="{{ cdn_asset('/css/backend.css?version=' . config('adminlte.version')) }}" rel="stylesheet">
+    <link href="{{ mix('/css/app.css') }}" rel="stylesheet">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -48,6 +49,8 @@
     <!-- Google Font -->
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+
+    @stack('extra-styles')
 
     @yield('head-extras')
 </head>
@@ -104,7 +107,7 @@
 </div>
 <!-- ./wrapper -->
 
-<script src="{{ mix('/js/app.js') }} "></script>
+<script src="{{ mix('/js/app.js') }}"></script>
 <script src="{{ mix('/js/plugins.js') }}"></script>
 
 <!-- Moment Js-->

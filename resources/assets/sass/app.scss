@@ -1,18 +1,103 @@
-
 // Fonts
 @import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
 //AdminLTE
 @import url("/public/css/backend.css");
-
 // Variables
 @import "variables";
 
 // Bootstrap
-@import '~bootstrap/scss/bootstrap';
+//@import '~bootstrap/scss/bootstrap';
 
 .navbar-laravel {
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
 }
 
-/** Custom CSS */
+/* * * * * * * * * * * * * *
+ *                         *
+ *  Custom CSS             *
+ *  Author: Blake Nahin    *
+ *                         *
+ * * * * * * * * * * * * * */
+
+/* ----- Weather ----- */
+
+#metar-search {
+  width: 180px;
+  text-transform: uppercase;
+}
+
+#search-col {
+  border-right: 1px solid #ccc;
+}
+
+.atis-box {
+  .info-box-left {
+    border-radius: 2px 0 0 2px;
+    display: block;
+    float: left;
+    height: 114px;
+    width: 90px;
+    text-align: center;
+    /* font-size: 45px; */
+    /* line-height: 90px; */
+    background: rgba(0, 0, 0, 0.2);
+    &.bg-aqua {
+      .atis-icao {
+        border-bottom: 1px solid #74fffa4d;
+      }
+      .atis-name {
+        border-top: 1px solid #74fffa4d;
+      }
+    }
+    &.bg-green {
+      .atis-icao {
+        border-bottom: 1px solid #a1f35480;
+      }
+      .atis-name {
+        border-top: 1px solid #a1f35480;
+      }
+    }
+    &.bg-red {
+      .atis-icao {
+        border-bottom: 1px solid #bc1a1a80;
+      }
+      .atis-name {
+        border-top: 1px solid #bc1a1a80
+      }
+    }
+    &.bg-purple {
+      .atis-icao {
+        border-bottom: 1px solid #5f3f8780;
+      }
+      .atis-name {
+        border-top: 1px solid #5f3f8780;
+      }
+    }
+    &.bg- * {
+      .atis-icao {
+        font-size: 20px;
+      }
+    }
+  }
+  .atis-letter {
+    font-size: 45px;
+  }
+  .info-box-content {
+    padding: 0;
+  }
+}
+
+.atis-table {
+  .metar {
+    background: #ddd;
+    border-bottom: 2px solid #ccc;
+  }
+}
+
+.dec-body {
+  th {
+    background: #ddd;
+    border-bottom: 2px solid #ccc !important;
+  }
+}

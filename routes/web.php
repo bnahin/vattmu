@@ -18,5 +18,10 @@ Route::group(['namespace' => 'Auth'], function () {
     $this->post('logout', 'LoginController@logout')->name('logout');
 });
 
-Route::get('/', 'WelcomeController@index')->name('home')
-    ->middleware('auth');
+Route::middleware('auth')->group(function () {
+    Route::get('/', 'WelcomeController@index')->name('home');
+
+    /** Weather */
+    Route::get('/weather', 'WeatherController@index')->name('weather');
+    Route::post('/weather/metar', 'WeatherController@metar');
+});

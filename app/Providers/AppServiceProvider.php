@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Http\Controllers\WeatherController;
+use GuzzleHttp\Client as GuzzleHTTP;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Blade;
@@ -35,5 +37,19 @@ class AppServiceProvider extends ServiceProvider
                 $this->app->register(\Barryvdh\Debugbar\ServiceProvider::class);
             }
         }
+
+        /** WeatherAPI */
+        $this->app->when(WeatherController::class)
+            ->needs(GuzzleHTTP::class)
+            ->give(function () {
+                return new GuzzleHTTP(
+                    [
+                        'base_uri' => 'https://api.checkwx.com',
+                        'timeout'  => 10.0,
+                        'headers'  => [
+                            'X-API-KEY' => config('services.checkwx.key')
+                        ]
+                    ]);
+            });
     }
 }

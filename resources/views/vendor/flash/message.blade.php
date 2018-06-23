@@ -6,8 +6,8 @@
             'body'       => $message['message']
         ])
     @else
-        <div class="flash-alert alert
-                    alert-{{ $message['level'] }}
+        <div class="flash-alert callout
+                    callout-{{ $message['level'] }}
         {{ $message['important'] ? 'alert-important' : '' }}"
              role="alert"
         >
@@ -30,4 +30,6 @@
     @endif
 @endforeach
 
-{{ session()->forget('flash_notification') }}
+@php
+session()->forget('flash_notification')
+@endphp

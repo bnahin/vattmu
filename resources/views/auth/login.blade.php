@@ -20,6 +20,11 @@
                         class="fas fa-paper-plane"></i>
                     Sign in with
                     VATSIM</a>
+                <a href="{{ route('login') }}"
+                   onclick="event.preventDefault(); document.getElementById('login-form').submit();"
+                   class="btn btn-block btn-social btn-warning btn-flat"><i
+                        class="fas fa-user"></i>
+                    Continue as Guest</a>
             </div>
             <form id="login-form" action="{{ url('login') }}" method="post" style="display:none;">
                 @csrf
