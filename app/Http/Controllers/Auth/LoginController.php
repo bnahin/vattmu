@@ -53,8 +53,9 @@ class LoginController extends Controller
             $returnUrl, function ($key, $secret, $url) {
             Session::put('vatsimAuth', compact('key', 'secret'));
             header('Location: ' . $url);
+            echo $url;
         }, function ($e) {
-            throw new Exception("Could not authenticate: " . $e['message']);
+            throw new \Exception("Could not authenticate: " . $e->getMessage());
         });
     }
 

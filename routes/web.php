@@ -24,4 +24,7 @@ Route::middleware('auth')->group(function () {
     /** Weather */
     Route::get('/weather', 'WeatherController@index')->name('weather');
     Route::post('/weather/metar', 'WeatherController@metar');
+
+    /** TMU Map */
+    Route::get('/tmu', 'TmuController@index')->name('tmu');
 });

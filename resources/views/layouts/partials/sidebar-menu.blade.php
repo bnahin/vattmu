@@ -7,27 +7,27 @@
         </a>
     </li>
     <li class="{{ (Route::currentRouteName() == 'weather') ? 'active':'' }}">
-        <a href="weather">
+        <a href="{{ route('weather') }}">
             <i class="fas fa-sun"> </i> Weather
         </a>
     </li>
     <li class="">
-        <a href="pirep">
+        <a href="#">
             <i class="fas fa-paper-plane"> </i> PIREPs
         </a>
     </li>
     <li class="">
-        <a href="pirep">
+        <a href="#">
             <i class="fas fa-exclamation-triangle"> </i> Restrictions
         </a>
     </li>
-    <li class="">
-        <a href="pirep">
+    <li class="{{ (Route::currentRouteName() == 'tmu') ? 'active':'' }}">
+        <a href="{{ route('tmu') }}">
             <i class="fas fa-plane"> </i> TMU Map
         </a>
     </li>
     <li class="">
-        <a href="pirep">
+        <a href="#">
             <i class="fas fa-users"> </i> Controller Info
         </a>
     </li>
@@ -38,7 +38,7 @@
         </a>
     </li>
     <li class="">
-        <a href="admin">
+        <a href="#">
             <i class="fas fa-cogs"> </i> Configuration
         </a>
     </li>
